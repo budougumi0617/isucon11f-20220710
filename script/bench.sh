@@ -10,7 +10,7 @@ sudo systemctl stop mysql
 sudo systemctl stop nginx
 # 名前は次のコマンドで調べておく
 # systemctl list-unit-files --type=service
-sudo systemctl stop xxxx.service
+sudo systemctl stop isucholar.go.service
 sleep 2
 
 ## language specific build code here
@@ -27,7 +27,7 @@ sudo truncate --size 0 /var/log/mysql/slow.log
 
 sudo systemctl start mysql
 sleep 5
-sudo systemctl start xxxx.service
+sudo systemctl start isucholar.go.service
 sudo systemctl start nginx
 
 ## initialize code here
