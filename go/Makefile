@@ -16,3 +16,12 @@ clean: ## Cleanup files
 .PHONY: help
 help: ## Show help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+
+bench: build
+	sudo truncate --size 0 /var/log/mysql/slow.log
+	sudo truncate --size 0 /var/log/nginx/access.log
+	sudo systemctl restart nginx.service
+	sudo systemctl restart isucholar.go.service
+
+alp:
+	alp -c alp.yaml ltsv
