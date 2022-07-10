@@ -1,0 +1,7 @@
+/etc/mysql/mysql.cnf
+/etc/mysql/my.cnf
+/etc/nginx/nginx.conf
+/etc/sysctl.conf
+/etc/security/limits.conf
+/etc/netdata/netdata.conf
+/etc/netdata/apps_groups.conf
