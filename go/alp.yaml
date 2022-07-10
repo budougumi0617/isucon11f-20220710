@@ -12,9 +12,9 @@ limit:                      # 5000
 noheaders:                  # boolean
 show_footers:               # boolean
 matching_groups:            # array
-  - "/api/estate/.+"
-  - "/api/recommended_estate/.+"
-  - "/api/chair/.+"
+  - "/api/courses/[0-9A-Z]+?/classes/[0-9A-Z]+?/assignments/scores"
+  - "/api/courses/[0-9A-Z]+?"
+  - "/api/announcements/.+"
 filters:                    # string
 output:                     # string(comma separated)
 pos_file:                   # string
