@@ -1,0 +1,6 @@
+assignments/
+*.png
+*.jpg
+*.jpeg
+*.pdf
+.bundle/
