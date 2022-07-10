@@ -5,7 +5,9 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
+	_ "net/http/pprof"
 	"net/url"
 	"os"
 	"os/exec"
@@ -13,6 +15,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/felixge/fgprof"
 	"github.com/go-sql-driver/mysql"
 	"github.com/gorilla/sessions"
 	"github.com/jmoiron/sqlx"
@@ -35,6 +38,11 @@ type handlers struct {
 }
 
 func main() {
+	http.DefaultServeMux.Handle("/debug/fgprof", fgprof.Handler())
+	go func() {
+		log.Println(http.ListenAndServe(":6060", nil))
+	}()
+
 	e := echo.New()
 	e.Debug = GetEnv("DEBUG", "") == "true"
 	e.Server.Addr = fmt.Sprintf(":%v", GetEnv("PORT", "7000"))
